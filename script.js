@@ -1,0 +1,1 @@
+window.tempCall = a => a.map(m => m.nmae);

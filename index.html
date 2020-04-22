@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GOLANG</title>
+</head>
+
+<body>
+    <input id="demo" type="text" />
+    <div id="text">go wow</div>
+    <button onclick="call()">ok</button>
+    <script src="wasm_exec.js"></script>
+    <script src="script.js"></script>
+    <script>
+        const go = new Go();
+        WebAssembly.instantiateStreaming(fetch("bug-catcher.wasm"), go.importObject).then((result) => {
+            go.run(result.instance);
+            // window.onerror = (message, source, lineno, colno, error) => {
+            //     // error = error.toString()
+            //     console.log({message, source, lineno, colno, error})
+            //     console.log(error.stack)
+            // }
+            setTimeout(() => {
+                var s = undefined;
+                tempCall(undefined);
+            }, 1000);
+        });
+    </script>
+</body>
+
+</html>
